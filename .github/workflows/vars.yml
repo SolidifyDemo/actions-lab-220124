@@ -19,7 +19,6 @@ jobs:
           echo test, and deploy your project.
 
   build-all: 
-    if: GITHUB_REF_NAME == 'main'
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +30,8 @@ jobs:
           echo branch $GITHUB_REF_NAME
 
       - name: Run a multi-line script
+        if: ${{ env.GITHUB_REF_NAME }} == 'main'
         run: |
+          echo branch $GITHUB_REF_NAME
           echo Add other actions to build,
           echo test, and deploy your project.
