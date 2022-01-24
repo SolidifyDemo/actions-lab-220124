@@ -20,7 +20,7 @@ jobs:
 
   build-all: 
     runs-on: ubuntu-latest
-    if: env.GITHUB_REF_NAME == 'main'
+    if: GITHUB_REF_NAME == 'main'
     steps:
       - uses: actions/checkout@v2
       - name: Run a one-line script
