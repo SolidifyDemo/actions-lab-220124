@@ -19,7 +19,7 @@ jobs:
           echo test, and deploy your project.
 
   build-all: 
-    if: ${{ GITHUB_REF_NAME == 'main' }}
+    if: GITHUB_REF_NAME == 'main'
     runs-on: ubuntu-latest
 
     steps:
