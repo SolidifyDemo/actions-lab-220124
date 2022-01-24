@@ -1,4 +1,4 @@
-name: CI
+name: Variables
 on:
   workflow_dispatch:
 
@@ -19,6 +19,7 @@ jobs:
           echo test, and deploy your project.
 
   build-all: 
+    if: ${{ env.GITHUB_REF_NAME == 'main' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +27,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo branch ${{ github.ref_name }}
+          echo branch ${{ env.GITHUB_REF_NAME }}
           echo branch $GITHUB_REF_NAME
 
       - name: Run a multi-line script
