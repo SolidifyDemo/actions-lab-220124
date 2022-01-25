@@ -1,0 +1,33 @@
+name: Self-service from issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Post prepare message
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const body = `👋 Thank you for opening this self-service issue.
+
+            ## Run the deployment
+            Add a comment to this issue with the following command in order to run a deployment:
+            \`\`\`
+            /deploy
+            \`\`\`
+            `
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            })
