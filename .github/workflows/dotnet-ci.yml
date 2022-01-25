@@ -1,5 +1,8 @@
 name: Build dotnet app
 
+env:
+  my_env: 'dev'
+  
 on:
   push:
     branches: [ main ]
@@ -37,6 +40,7 @@ jobs:
         path: webapp/**
 
   deploy_dev:
+    if: env.my_env == 'main'
     runs-on: ubuntu-latest
     needs: build
     environment:
