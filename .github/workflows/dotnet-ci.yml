@@ -60,10 +60,7 @@ jobs:
       with:
         name: webapp
         path: webapp
-
-    - name: Echo secret
-      run: echo AZURE_CREDENTIALS - ${{ secrets.AZURE_CREDENTIALS }}
-      
+     
     - name: Login via Azure CLI
       uses: azure/login@v1
       with:
