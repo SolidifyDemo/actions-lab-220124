@@ -38,12 +38,16 @@ jobs:
 
   deploy_dev:
     runs-on: ubuntu-latest
+    environment:
+      name: dev
     steps:
       - name: Deploy to dev
         run: echo Deploy to development 
         
   deploy_staging:
     runs-on: ubuntu-latest
+    environment:
+      name: staging
     steps:
     - name: Deploy to stage
       run: echo Deploy to staging
