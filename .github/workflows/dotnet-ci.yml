@@ -35,3 +35,21 @@ jobs:
       with:
         name: webapp
         path: webapp/**
+
+  deploy_dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to dev
+        run: echo Deploy to development 
+        
+  deploy_staging:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to stage
+      run: echo Deploy to staging
+
+
+
+
+
+
